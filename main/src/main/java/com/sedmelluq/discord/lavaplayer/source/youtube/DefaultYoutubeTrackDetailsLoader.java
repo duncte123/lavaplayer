@@ -71,7 +71,8 @@ public class DefaultYoutubeTrackDetailsLoader implements YoutubeTrackDetailsLoad
 
             return new DefaultYoutubeTrackDetails(videoId, playerInfo);
           case REQUIRES_LOGIN:
-            return new DefaultYoutubeTrackDetails(videoId, getTrackInfoFromEmbedPage(httpInterface, videoId));
+            throw new FriendlyException("Cannot play this video because it is age-restricted", COMMON, null);
+//            return new DefaultYoutubeTrackDetails(videoId, getTrackInfoFromEmbedPage(httpInterface, videoId));
           case DOES_NOT_EXIST:
             return null;
         }
